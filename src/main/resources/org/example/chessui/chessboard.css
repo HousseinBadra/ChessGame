@@ -1,0 +1,18 @@
+.square {
+    -fx-display: flex;
+    -fx-justify-content: center;
+    -fx-align-items: center;
+    -fx-box-sizing: border-box;
+    -fx-width: 60px;
+    -fx-height: 60px;
+}
+
+.current-square {
+ -fx-effect: innershadow(three-pass-box, red, 5, 0.0, 0, 0);
+
+}
+
+
+.highlighted-square {
+    -fx-effect: innershadow(three-pass-box, yellow, 5, 0.0, 0, 0);
+}

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="org.example.chessui.Chessboard"
+            prefHeight="600.0" prefWidth="600.0">
+<GridPane fx:id="chessBoard" xmlns:fx="http://javafx.com/fxml/1" hgap="0" vgap="0">
+<children>
+    <!-- 8x8 Chessboard Squares -->
+    <!-- Loop not supported in FXML, so we manually define 64 rectangles -->
+    <!-- We'll use alternating colors in Java code or by copying/pasting -->
+</children>
+</GridPane>
+
+    <Button fx:id="undoButton"
+            text="Undo"
+            onAction="#handleUndo"
+            AnchorPane.leftAnchor="10.0"
+            AnchorPane.bottomAnchor="10.0"/>
+</AnchorPane>
