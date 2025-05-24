@@ -24,7 +24,7 @@ public class SessionManager {
     }
 
     public String getUsername() {
-        return "charbel";
+        return username;
 
 
     }
