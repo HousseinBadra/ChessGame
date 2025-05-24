@@ -188,26 +188,12 @@ public class OnePlayerGame {
             return; // Don't make AI move if game is already over
         }
 
-        // Basic AI: find all legal moves for AI and pick one randomly
-        List<ChessMove> allLegalMoves = new ArrayList<>();
-        for (int r = 0; r < 8; r++) {
-            for (int c = 0; c < 8; c++) {
-                ChessPiece piece = game.getBoard().get(r).get(c);
-                if (piece != null && piece.player == AI_COLOR) {
-                    allLegalMoves.addAll(game.getLegalMoves(new Position(c, r)));
-                }
-            }
-        }
+        ChessMove aiMove = game.getBestMove();
 
-        if (!allLegalMoves.isEmpty()) {
-            Random random = new Random();
-            ChessMove aiMove = allLegalMoves.get(random.nextInt(allLegalMoves.size()));
+        if (aiMove != null) {
             game.applyMove(aiMove);
             game.togglePlayer(); // Switch back to human player
             render();
-        } else {
-            // This case should be handled by isStalemate/isCheckmate, but as a fallback:
-            System.out.println("AI has no legal moves. Game might be over or an error occurred.");
         }
     }
 
