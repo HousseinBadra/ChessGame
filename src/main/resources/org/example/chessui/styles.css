@@ -1,0 +1,41 @@
+AnchorPane, VBox, BorderPane {
+    -fx-padding: 20;
+}
+Button {
+    -fx-font-size: 14px;
+}
+Label {
+    -fx-font-size: 16px;
+}
+
+.square {
+    -fx-display: flex;
+    -fx-alignment: center;
+    -fx-box-sizing: border-box;
+}
+
+.current-square {
+    -fx-effect: innershadow(three-pass-box, red, 5, 0.0, 0, 0);
+}
+
+.highlighted-square {
+    -fx-effect: innershadow(three-pass-box, yellow, 5, 0.0, 0, 0);
+}
+
+/* ... other styles ... */
+
+.turn-label {
+    -fx-font-size: 30px; /* Bigger font size */
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-padding: 5px;
+}
+
+.game-status-label {
+    -fx-font-size: 26px; /* Bigger font size */
+    -fx-font-weight: bold;
+    -fx-text-fill: #FFD700;
+    -fx-padding: 5px;
+}
+
+/* ... other styles ... */

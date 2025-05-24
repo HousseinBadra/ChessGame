@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="org.example.chessui.Controllers.MainMenuController"
+      alignment="CENTER" spacing="20" prefWidth="400" prefHeight="300"
+      style="-fx-background-color: linear-gradient(to bottom right, #2c3e50, #3498db); -fx-padding:20;">
+
+    <!-- Welcome Label -->
+    <Label fx:id="welcomeLabel"
+           text="Welcome, Player!"
+           style="-fx-text-fill: white; -fx-font-size:18px; -fx-font-weight: bold;" />
+
+    <!-- Game Mode Buttons -->
+    <HBox spacing="10">
+        <Button fx:id="aiBtn" text="Play vs AI"
+                style="-fx-background-color:#2980b9; -fx-text-fill:white; -fx-font-weight:bold; -fx-background-radius:5; -fx-padding:8 20;" />
+        <Button fx:id="pvpBtn" text="Two Players"
+                style="-fx-background-color:#2980b9; -fx-text-fill:white; -fx-font-weight:bold; -fx-background-radius:5; -fx-padding:8 20;" />
+    </HBox>
+
+    <!-- Logout Button -->
+    <Button fx:id="logoutBtn" text="Logout"
+            style="-fx-background-color:#c0392b; -fx-text-fill:white; -fx-font-weight:bold; -fx-background-radius:5; -fx-padding:8 20;" />
+
+</VBox>

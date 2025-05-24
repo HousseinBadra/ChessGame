@@ -58,7 +58,7 @@ public class ChessGame {
     }
 
     public void undo() {
-        if (moveHistory.isEmpty()) return;
+        if (moveHistory.size() <= 1) return;
         ChessMove move = moveHistory.getLast();
         moveHistory.removeLast();
         totalMoves--;
