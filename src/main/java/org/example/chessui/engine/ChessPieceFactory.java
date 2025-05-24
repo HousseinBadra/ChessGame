@@ -21,21 +21,21 @@ public class ChessPieceFactory {
     public ChessPiece getPiece(PieceType request, ChessPlayer player) {
 
         if (request == PieceType.Bishop) {
-            return new ChessPiece(3, player, pieceStrategyFactory.getStrategy(request), request);
+            return new ChessPiece(3, player, request);
         }
         if (request == PieceType.Knight) {
-            return new ChessPiece(3, player, pieceStrategyFactory.getStrategy(request), request);
+            return new ChessPiece(3, player,  request);
         }
         if (request == PieceType.Rook) {
-            return new ChessPiece(5, player, pieceStrategyFactory.getStrategy(request), request);
+            return new ChessPiece(5, player,  request);
         }
         if (request == PieceType.Queen) {
-            return new ChessPiece(8, player, pieceStrategyFactory.getStrategy(request), request);
+            return new ChessPiece(8, player,  request);
         }
         if (request == PieceType.Pawn) {
-            return new ChessPiece(1, player, pieceStrategyFactory.getStrategy(request), request);
+            return new ChessPiece(1, player,  request);
         }
-        return new ChessPiece(1000, player, pieceStrategyFactory.getStrategy(request), request);
+        return new ChessPiece(1000, player,  request);
 
     }
 }

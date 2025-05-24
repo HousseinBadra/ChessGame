@@ -5,8 +5,7 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="org.example.chessui.Controllers.OnePlayerGame"
-            prefHeight="700.0" prefWidth="800.0" styleClass="root"
+            fx:controller="org.example.chessui.Controllers.GameReplay" prefHeight="700.0" prefWidth="800.0" styleClass="root"
             stylesheets="@styles.css">
 
     <VBox alignment="CENTER" spacing="20" AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
@@ -26,9 +25,9 @@
             <padding>
                 <Insets top="10" bottom="20"/>
             </padding>
-            <Button fx:id="resetButton" text="New Game" onAction="#handleNewGame" styleClass="control-button"/>
+            <Button fx:id="undoButton" text="Undo" onAction="#handleUndo" styleClass="control-button"/>
+            <Button fx:id="moveForward" text="Move" onAction="#moveForward" styleClass="control-button"/>
             <Button fx:id="backButton" text="go back" onAction="#handleGoBack" styleClass="control-button"/>
-            <Button fx:id="saveButton" text="save" onAction="#saveGame" styleClass="control-button"/>
         </HBox>
     </VBox>
 </AnchorPane>

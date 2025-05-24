@@ -43,7 +43,7 @@ public class TwoPlayersLocalGame {
     private ChessGame game = new ChessGame(); // Make it non-final so we can reinitialize
     private ArrayList<ChessMove> moves = new ArrayList<>();
     private Position currentPosition = null;
-    private GameService gameService = new GameService(SessionManager.getInstance());
+    private GameService gameService = GameService.getInstance();
     private boolean saved = false;
     private long gameId = -1;
 
@@ -236,7 +236,7 @@ public class TwoPlayersLocalGame {
         try {
             GameDTO g = new GameDTO();
             g.setWhiteUsername(s.getUsername());
-            g.setBlackUsername("AI");
+            g.setBlackUsername(s.getUsername());
             g.setMoves(gameService.convertChessMove(game.getMoveHistory().subList(1,game.getMoveHistory().size())));
             if(!saved) {
                 this.gameId = gameService.addGame(g).id;

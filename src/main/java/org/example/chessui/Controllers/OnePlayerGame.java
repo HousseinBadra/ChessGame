@@ -1,5 +1,6 @@
 package org.example.chessui.Controllers;
 
+import org.example.chessui.auth.SessionManager;
 import org.example.chessui.engine.ChessGame;
 import org.example.chessui.engine.types.ChessMove;
 import org.example.chessui.engine.types.ChessPiece;
@@ -18,6 +19,8 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
+import org.example.chessui.game.GameDTO;
+import org.example.chessui.game.GameService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,14 +30,18 @@ public class OnePlayerGame {
 
     @FXML public Button resetButton;
     public Button backButton;
+    public Button saveButton;
     @FXML private GridPane chessBoard;
     @FXML private Label turnLabel;
     @FXML private Label gameStatusLabel;
 
+    private final GameService gameService = GameService.getInstance();
     private final ArrayList<ArrayList<StackPane>> board = new ArrayList<>();
     private ChessGame game = new ChessGame(); // Make it non-final so we can reinitialize
     private ArrayList<ChessMove> moves = new ArrayList<>();
     private Position currentPosition = null;
+    private boolean saved = false;
+    private long gameId = -1;
 
     private final ChessPlayer PLAYER_COLOR = ChessPlayer.White; // Human player is always White
     private final ChessPlayer AI_COLOR = ChessPlayer.Black;     // AI is always Black
@@ -228,6 +235,28 @@ public class OnePlayerGame {
             stage.show();
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
+        }
+    }
+
+    @FXML
+    private void saveGame() {
+        SessionManager s = SessionManager.getInstance();
+        try {
+            GameDTO g = new GameDTO();
+            g.setWhiteUsername(s.getUsername());
+            g.setBlackUsername("AI");
+            g.setMoves(gameService.convertChessMove(game.getMoveHistory().subList(1,game.getMoveHistory().size())));
+            if(!saved) {
+                this.gameId = gameService.addGame(g).id;
+                this.saved = true;
+            }
+            else {
+                g.setId(gameId);
+                gameService.updateGame(g);
+            }
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
     }
 }

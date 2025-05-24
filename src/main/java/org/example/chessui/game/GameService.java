@@ -11,20 +11,43 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.List;
+import java.util.Objects;
 
 public class GameService {
     private static final String BASE_URL = "http://localhost:8081/api/games";
     private final HttpClient httpClient;
     private final Gson gson;
-    private final SessionManager authManager;
+    private final SessionManager authManager = SessionManager.getInstance();
 
     /**
      * @param authManager provides JWT token for authenticated requests
      */
-    public GameService(SessionManager authManager) {
+    private List<GameDTO> history;
+    private Long index = (long) -1;
+
+    public Long getIndex() {
+        return index;
+    }
+
+    public void setIndex(Long index) {
+        this.index = index;
+    }
+
+    public List<GameDTO> getHistory() {
+        return history;
+    }
+
+    private static GameService instance;
+    private String token, username;
+
+    public static GameService getInstance() {
+        if (instance == null) instance = new GameService();
+        return instance;
+    }
+
+    private GameService() {
         this.httpClient = HttpClient.newHttpClient();
         this.gson = new Gson();
-        this.authManager = authManager;
     }
 
     private HttpRequest.Builder withAuthHeaders(HttpRequest.Builder builder) {
@@ -81,7 +104,9 @@ public class GameService {
 
         HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
         if (response.statusCode() >= 200 && response.statusCode() < 300) {
-            return gson.fromJson(response.body(), new TypeToken<List<GameDTO>>() {}.getType());
+            this.history = gson.fromJson(response.body(), new TypeToken<List<GameDTO>>() {
+            }.getType());
+            return this.history;
         } else {
             throw new RuntimeException("Failed to fetch games: " + response.body());
         }
@@ -89,5 +114,14 @@ public class GameService {
 
     public List<String> convertChessMove(List<ChessMove> moves) {
         return moves.stream().map(gson::toJson).toList();
+    }
+
+
+    public List<ChessMove> convertResponseToMoves() {
+
+        GameDTO d = getHistory().stream().filter(e -> Objects.equals(e.id, getIndex())).toList().getFirst();
+        return d.moves.stream()
+                .map(json -> gson.fromJson(json, ChessMove.class))
+                .toList();
     }
 }

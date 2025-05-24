@@ -20,7 +20,7 @@ public class Castle extends MoveStrategy {
                 ChessPiece piece = row.get(j);
                 Position checkingPosition = new Position(j, i);
                 if (piece != null && piece.player != player)
-                    for (MoveStrategy stg : piece.strategy)
+                    for (MoveStrategy stg : piece.getStrategy())
                         if (stg.canAttack(board, piece, target, null, checkingPosition)) {
                             return false;
                         }

@@ -39,7 +39,7 @@ public class GameListController {
     private Button refreshButton;
 
     private final ObservableList<GameDTO> games = FXCollections.observableArrayList();
-    private final GameService gameService = new GameService(SessionManager.getInstance());
+    private final GameService gameService = GameService.getInstance();
 
     @FXML
     public void initialize() {
@@ -49,10 +49,16 @@ public class GameListController {
         blackColumn.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getBlackUsername()));
 
         // Action column with Delete and Analyse buttons
+        // Action column with Analyse button
         actionColumn.setCellFactory((Callback<TableColumn<GameDTO, Void>, TableCell<GameDTO, Void>>) col -> new TableCell<>() {
             private final Button analyseButton = new Button("Analyse");
+
             {
-                analyseButton.setOnAction(e -> System.out.println("hi"));
+                analyseButton.setOnAction(e -> {
+                    // get the GameDTO for the current row
+                    GameDTO game = getTableView().getItems().get(getIndex());
+                    analyseGame(e, game.getId());
+                });
             }
 
             @Override
@@ -61,7 +67,7 @@ public class GameListController {
                 if (empty) {
                     setGraphic(null);
                 } else {
-                    // layout buttons horizontally
+                    // layout button horizontally
                     HBox box = new HBox(5, analyseButton);
                     setGraphic(box);
                 }
@@ -100,4 +106,21 @@ public class GameListController {
             System.out.println(ex.getMessage());
         }
     }
+
+    private void analyseGame(ActionEvent e, Long id) {
+        gameService.setIndex(id);
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/chessui/gameReplay.fxml"));
+            ;
+            Parent root = loader.load();
+            Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+            Scene c = new Scene(root);
+            c.getStylesheets().add(getClass().getResource("/org/example/chessui/styles.css").toExternalForm());
+            stage.setScene(c);
+            stage.show();
+        } catch (Exception ex) {
+            throw new RuntimeException(ex);
+        }
+    }
+
 }

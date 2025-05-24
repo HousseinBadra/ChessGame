@@ -18,7 +18,7 @@ class PawnMove extends MoveStrategy {
             if (board.get(position.y + 1).get(position.x) == null) {
                 Position newPosition = new Position(position.x, position.y + 1);
                 if (position.y == 6) {
-                    ChessPiece newQueen = new ChessPiece(8, piece.player, MoveStrategyFactory.getFactory().getStrategy(PieceType.Queen), PieceType.Queen);
+                    ChessPiece newQueen = new ChessPiece(8, piece.player, PieceType.Queen);
                     sideEffect = new ChessMove(null, null, null, piece, newQueen, null, Strategies.Promotion, newPosition, newPosition);
                 }
                 result.add(new ChessMove(position, newPosition, piece.getClone(), null, sideEffect, Strategies.PawnMove, null, null));
@@ -28,7 +28,7 @@ class PawnMove extends MoveStrategy {
             if (board.get(position.y - 1).get(position.x) == null) {
                 Position newPosition = new Position(position.x, position.y - 1);
                 if (position.y == 1) {
-                    ChessPiece newQueen = new ChessPiece(8, piece.player, MoveStrategyFactory.getFactory().getStrategy(PieceType.Queen), PieceType.Queen);
+                    ChessPiece newQueen = new ChessPiece(8, piece.player,  PieceType.Queen);
                     sideEffect = new ChessMove(null, null, null, piece, newQueen, null, Strategies.Promotion, newPosition, newPosition);
                 }
                 result.add(new ChessMove(position, newPosition, piece.getClone(), null, sideEffect, Strategies.PawnMove, null, null));

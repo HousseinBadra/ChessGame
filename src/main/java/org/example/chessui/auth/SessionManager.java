@@ -20,11 +20,12 @@ public class SessionManager {
     }
 
     public String getToken() {
-       return token;
+        return token;
     }
 
     public String getUsername() {
-        return username;
+        return "charbel";
+
 
     }
 

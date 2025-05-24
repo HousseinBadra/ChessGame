@@ -20,7 +20,7 @@ public class PawnTake extends MoveStrategy {
                     ChessPiece target = board.get(newPosition.y).get(newPosition.x);
                     if (target != null && target.player != piece.player) {
                         if (position.y == 6) {
-                            ChessPiece newQueen = new ChessPiece(8, piece.player, MoveStrategyFactory.getFactory().getStrategy(PieceType.Queen), PieceType.Queen);
+                            ChessPiece newQueen = new ChessPiece(8, piece.player, PieceType.Queen);
                             sideEffect = new ChessMove(null, null, null, piece, newQueen, null, Strategies.Promotion, newPosition, newPosition);
                         }
                         result.add(new ChessMove(position, newPosition, piece.getClone(), target, sideEffect, Strategies.PawnTake, newPosition, null));
@@ -35,7 +35,7 @@ public class PawnTake extends MoveStrategy {
                     ChessPiece target = board.get(newPosition.y).get(newPosition.x);
                     if (target != null && target.player != piece.player) {
                         if (position.y == 1) {
-                            ChessPiece newQueen = new ChessPiece(8, piece.player, MoveStrategyFactory.getFactory().getStrategy(PieceType.Queen), PieceType.Queen);
+                            ChessPiece newQueen = new ChessPiece(8, piece.player,  PieceType.Queen);
                             sideEffect = new ChessMove(null, null, null, piece, newQueen, null, Strategies.Promotion, newPosition, newPosition);
                         }
                         result.add(new ChessMove(position, newPosition, piece.getClone(), target, sideEffect, Strategies.PawnTake, newPosition, null));

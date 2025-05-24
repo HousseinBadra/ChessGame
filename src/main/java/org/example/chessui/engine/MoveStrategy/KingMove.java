@@ -21,7 +21,7 @@ public class KingMove extends MoveStrategy {
                 Position checkingPosition = new Position(j, i);
                 if (piece != null && piece.player != player){
                     board.get(target.y).set(target.x, null);
-                    for (MoveStrategy stg : piece.strategy){
+                    for (MoveStrategy stg : piece.getStrategy()){
                         if (stg.canAttack(board, piece, target, null, checkingPosition)) {
                             board.get(target.y).set(target.x, p);
                             return true;
