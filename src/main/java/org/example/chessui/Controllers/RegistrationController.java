@@ -43,7 +43,9 @@ public class RegistrationController {
         try {
             FXMLLoader f = new FXMLLoader(getClass().getResource("/org/example/chessui/login.fxml"));
             Stage stage = (Stage) registerBtn.getScene().getWindow();
-            stage.setScene(new Scene(f.load()));
+            Scene c = new Scene(f.load());
+            c.getStylesheets().add(getClass().getResource("/org/example/chessui/styles.css").toExternalForm());
+            stage.setScene(c);
         } catch (Exception ignored) {}
     }
 }

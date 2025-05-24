@@ -12,6 +12,7 @@ import org.example.chessui.auth.AuthService;
 import org.example.chessui.auth.SessionManager;
 
 public class MainMenuController {
+    public Button historyBtn;
     @FXML private Label welcomeLabel;
     @FXML private Button aiBtn, pvpBtn;
     @FXML private Button logoutBtn;
@@ -20,6 +21,7 @@ public class MainMenuController {
         welcomeLabel.setText("Welcome, " + SessionManager.getInstance().getUsername());
         aiBtn.setOnAction(e -> switchTo("player_vs_ai.fxml", e));
         pvpBtn.setOnAction(e -> switchTo("two_players.fxml", e));
+        historyBtn.setOnAction(e -> switchTo("gameList.fxml", e));
         logoutBtn.setOnAction(e -> {
             try {
                 auth.logout();

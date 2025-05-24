@@ -223,6 +223,7 @@ public class TwoPlayersLocalGame {
             Parent root = loader.load();
             Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
             Scene c = new Scene(root);
+            c.getStylesheets().add(getClass().getResource("/org/example/chessui/styles.css").toExternalForm());
             stage.setScene(c);
             stage.show();
         } catch (Exception ex) {

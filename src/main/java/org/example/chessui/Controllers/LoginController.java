@@ -64,7 +64,9 @@ public class LoginController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/chessui/" + fxml));
             Parent root = loader.load();
             Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
-            stage.setScene(new Scene(root));
+            Scene c = new Scene(root);
+            c.getStylesheets().add(getClass().getResource("/org/example/chessui/styles.css").toExternalForm());
+            stage.setScene(c);
             stage.show();
         } catch (IOException err) {
             err.printStackTrace();

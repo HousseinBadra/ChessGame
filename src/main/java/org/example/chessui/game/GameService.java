@@ -73,9 +73,9 @@ public class GameService {
     /**
      * Get all games for a specific user.
      */
-    public List<GameDTO> getGamesByUser(Long userId) throws IOException, InterruptedException {
+    public List<GameDTO> getGamesByUser() throws IOException, InterruptedException {
         HttpRequest request = withAuthHeaders(HttpRequest.newBuilder()
-                .uri(URI.create(BASE_URL + "/user/" + userId)))
+                .uri(URI.create(BASE_URL + "/user/" + SessionManager.getInstance().getUsername())))
                 .GET()
                 .build();
 

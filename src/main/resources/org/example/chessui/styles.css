@@ -39,3 +39,42 @@ Label {
 }
 
 /* ... other styles ... */
+
+.root-pane {
+    -fx-background-color: #F4F4F4;
+}
+
+.header-label {
+    -fx-font-size: 18pt;
+    -fx-font-weight: bold;
+    -fx-alignment: center;
+}
+
+.game-table {
+    -fx-background-color: white;
+    -fx-border-color: #CCC;
+    -fx-border-width: 1;
+}
+
+.action-bar {
+    -fx-background-color: #E8E8E8;
+}
+
+.refresh-button {
+    -fx-font-size: 11pt;
+    -fx-padding: 5 15 5 15;
+}
+
+.button-group .button {
+    -fx-padding: 3 10 3 10;
+}
+
+.delete-button {
+    -fx-background-color: #D9534F;
+    -fx-text-fill: white;
+}
+
+.analyse-button {
+    -fx-background-color: #5BC0DE;
+    -fx-text-fill: white;
+}

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="org.example.chessui.Controllers.GameListController" styleClass="root-pane">
+    <top>
+        <Label text="My Chess Games" styleClass="header-label">
+            <BorderPane.margin>
+                <Insets top="10" bottom="10" />
+            </BorderPane.margin>
+        </Label>
+    </top>
+    <center>
+        <TableView fx:id="gameTable" styleClass="game-table">
+            <columns>
+                <TableColumn fx:id="idColumn" text="ID" prefWidth="50" />
+                <TableColumn fx:id="whiteColumn" text="White" prefWidth="150" />
+                <TableColumn fx:id="blackColumn" text="Black" prefWidth="150" />
+                <TableColumn fx:id="actionColumn" text="Actions" prefWidth="200" />
+            </columns>
+        </TableView>
+    </center>
+    <bottom>
+        <HBox spacing="10" styleClass="action-bar">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10" />
+            </padding>
+            <Region HBox.hgrow="ALWAYS" />
+            <Button fx:id="refreshButton" text="Refresh" styleClass="refresh-button" onAction="#onRefresh" />
+            <Button fx:id="backButton" text="go back" styleClass="refresh-button" onAction="#goBack" />
+        </HBox>
+    </bottom>
+</BorderPane>

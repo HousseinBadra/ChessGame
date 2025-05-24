@@ -17,6 +17,8 @@
                 style="-fx-background-color:#2980b9; -fx-text-fill:white; -fx-font-weight:bold; -fx-background-radius:5; -fx-padding:8 20;" />
         <Button fx:id="pvpBtn" text="Two Players"
                 style="-fx-background-color:#2980b9; -fx-text-fill:white; -fx-font-weight:bold; -fx-background-radius:5; -fx-padding:8 20;" />
+        <Button fx:id="historyBtn" text="Game history"
+                style="-fx-background-color:#2980b9; -fx-text-fill:white; -fx-font-weight:bold; -fx-background-radius:5; -fx-padding:8 20;" />
     </HBox>
 
     <!-- Logout Button -->
