@@ -1,6 +1,6 @@
-package engine.MoveStrategy;
+package org.example.chessui.engine.MoveStrategy;
 
-import engine.types.*;
+import org.example.chessui.engine.types.*;
 
 import java.util.ArrayList;
 

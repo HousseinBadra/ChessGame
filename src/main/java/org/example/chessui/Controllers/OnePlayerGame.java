@@ -1,10 +1,10 @@
 package org.example.chessui.Controllers;
 
-import engine.ChessGame;
-import engine.types.ChessMove;
-import engine.types.ChessPiece;
-import engine.types.ChessPlayer;
-import engine.types.Position;
+import org.example.chessui.engine.ChessGame;
+import org.example.chessui.engine.types.ChessMove;
+import org.example.chessui.engine.types.ChessPiece;
+import org.example.chessui.engine.types.ChessPlayer;
+import org.example.chessui.engine.types.Position;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

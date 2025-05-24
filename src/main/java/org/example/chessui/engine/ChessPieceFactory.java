@@ -1,9 +1,9 @@
-package engine;
+package org.example.chessui.engine;
 
-import engine.MoveStrategy.MoveStrategyFactory;
-import engine.types.ChessPiece;
-import engine.types.ChessPlayer;
-import engine.types.PieceType;
+import org.example.chessui.engine.MoveStrategy.MoveStrategyFactory;
+import org.example.chessui.engine.types.ChessPiece;
+import org.example.chessui.engine.types.ChessPlayer;
+import org.example.chessui.engine.types.PieceType;
 
 public class ChessPieceFactory {
 

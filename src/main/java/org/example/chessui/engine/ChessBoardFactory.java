@@ -1,9 +1,9 @@
-package engine;
+package org.example.chessui.engine;
 
 import java.util.ArrayList;
-import engine.types.ChessPiece;
-import engine.types.ChessPlayer;
-import engine.types.PieceType;
+import org.example.chessui.engine.types.ChessPiece;
+import org.example.chessui.engine.types.ChessPlayer;
+import org.example.chessui.engine.types.PieceType;
 
 public class ChessBoardFactory {
 

@@ -1,14 +1,14 @@
-package engine.MoveStrategy;
+package org.example.chessui.engine.MoveStrategy;
 
-import engine.types.ChessMove;
-import engine.types.ChessPiece;
-import engine.types.Position;
+import org.example.chessui.engine.types.ChessMove;
+import org.example.chessui.engine.types.ChessPiece;
+import org.example.chessui.engine.types.Position;
 
 import java.util.ArrayList;
 
-class X extends MoveStrategy {
+class Plus extends MoveStrategy {
 
-    X() {
+    Plus() {
         super();
     }
 
@@ -17,16 +17,16 @@ class X extends MoveStrategy {
         // check forward
         int counter;
         Position checkingPosition;
-        int[][] directions = {{1, 1}, {1, -1}, {-1, 1}, {-1, -1}};
+        int[][] directions = {{1, 0}, {0, 1}, {-1, 0}, {0, -1}};
         for (int[] direction : directions) {
             counter = 1;
-            while (counter <= 8) {
+            while (counter < 8) {
                 checkingPosition = new Position(position.x + counter * direction[0], position.y + counter * direction[1]);
                 if (!checkingPosition.isValid()) counter = 9;
                 else if (board.get(checkingPosition.y).get(checkingPosition.x) == null) {
-                    result.add(new ChessMove(position, checkingPosition, piece.getClone(), null, null, Strategies.X, null, null));
+                    result.add(new ChessMove(position, checkingPosition, piece.getClone(), null, null, Strategies.Plus, null, null));
                 } else if (board.get(checkingPosition.y).get(checkingPosition.x).player != piece.player) {
-                    result.add(new ChessMove(position, checkingPosition, piece.getClone(), board.get(checkingPosition.y).get(checkingPosition.x).getClone(), null, Strategies.X, checkingPosition, null));
+                    result.add(new ChessMove(position, checkingPosition, piece.getClone(), board.get(checkingPosition.y).get(checkingPosition.x).getClone(), null, Strategies.Plus, checkingPosition, null));
                     counter = 9;
                 } else {
                     counter = 9;

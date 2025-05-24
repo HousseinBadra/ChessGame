@@ -1,6 +1,6 @@
-package engine.types;
+package org.example.chessui.engine.types;
 
-import engine.MoveStrategy.MoveStrategy;
+import org.example.chessui.engine.MoveStrategy.MoveStrategy;
 
 import java.util.ArrayList;
 
@@ -9,7 +9,7 @@ public class ChessPiece {
     public final ChessPlayer player;
     public final PieceType type;
     public final ArrayList<MoveStrategy> strategy;
-    private int numberOfMoves = 0;
+    public int numberOfMoves = 0;
 
     public ChessPiece(int weight, ChessPlayer player, ArrayList<MoveStrategy> strategy, PieceType type) {
         this.weight = weight;

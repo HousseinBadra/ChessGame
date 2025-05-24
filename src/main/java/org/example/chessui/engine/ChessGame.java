@@ -1,7 +1,6 @@
-package engine;
+package org.example.chessui.engine;
 
-import engine.MoveStrategy.Strategies;
-import engine.types.*;
+import org.example.chessui.engine.types.*;
 
 import java.util.ArrayList;
 import java.util.Random;

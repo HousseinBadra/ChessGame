@@ -1,17 +1,17 @@
-package engine.types;
+package org.example.chessui.engine.types;
 
-import engine.MoveStrategy.Strategies;
+import org.example.chessui.engine.MoveStrategy.Strategies;
 
 public class ChessMove {
-    final Position from;
-    final Position to;
-    final Position destroyPosition;
-    final Position createPosition;
-    final ChessPiece piece;
-    final ChessPiece destroy;
-    final ChessMove sideEffect;
-    final ChessPiece create;
-    final Strategies stragie;
+    final public Position from;
+    final public Position to;
+    final public Position destroyPosition;
+    final public Position createPosition;
+    final public ChessPiece piece;
+    final public ChessPiece destroy;
+    final public ChessMove sideEffect;
+    final public ChessPiece create;
+    final public Strategies stragie;
 
     public Position getTo() {
         return to;

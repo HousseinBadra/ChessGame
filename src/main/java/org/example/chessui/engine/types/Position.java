@@ -1,4 +1,4 @@
-package engine.types;
+package org.example.chessui.engine.types;
 
 public class Position {
     public final int x;
