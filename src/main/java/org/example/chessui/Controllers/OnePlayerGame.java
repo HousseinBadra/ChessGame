@@ -5,13 +5,19 @@ import engine.types.ChessMove;
 import engine.types.ChessPiece;
 import engine.types.ChessPlayer;
 import engine.types.Position;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.Stage;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +26,7 @@ import java.util.Random;
 public class OnePlayerGame {
 
     @FXML public Button resetButton;
+    public Button backButton;
     @FXML private GridPane chessBoard;
     @FXML private Label turnLabel;
     @FXML private Label gameStatusLabel;
@@ -207,5 +214,19 @@ public class OnePlayerGame {
         render(); // Render the new game state
         // If AI starts (e.g., if you later add an option for AI to play white), call makeAiMove() here
         // Currently, human (White) always starts.
+    }
+    @FXML
+    private void handleGoBack(ActionEvent e) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/chessui/main_menu.fxml"));
+            ;
+            Parent root = loader.load();
+            Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+            Scene c = new Scene(root);
+            stage.setScene(c);
+            stage.show();
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 }

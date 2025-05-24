@@ -26,6 +26,7 @@
                 <Insets top="10" bottom="20"/>
             </padding>
             <Button fx:id="undoButton" text="Undo" onAction="#handleUndo" styleClass="control-button"/> <Button fx:id="resetButton" text="New Game" onAction="#handleNewGame" styleClass="control-button"/>
+            <Button fx:id="backButton" text="go back" onAction="#handleGoBack" styleClass="control-button"/>
         </HBox>
     </VBox>
 </AnchorPane>

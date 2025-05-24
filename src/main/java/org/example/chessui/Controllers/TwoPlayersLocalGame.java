@@ -5,13 +5,19 @@ import engine.types.ChessMove;
 import engine.types.ChessPiece;
 import engine.types.ChessPlayer;
 import engine.types.Position;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.Stage;
 
 import java.util.ArrayList;
 
@@ -21,6 +27,7 @@ public class TwoPlayersLocalGame {
     public Button undoButton;
     @FXML
     public Button resetButton; // New button for reset
+    public Button backButton;
     @FXML
     private GridPane chessBoard;
     @FXML
@@ -200,5 +207,19 @@ public class TwoPlayersLocalGame {
         chessBoard.setScaleY(1); // Reset board orientation to White
         setupBoard(); // Re-setup board for new game
         render(); // Render the new game state
+    }
+
+    @FXML
+    private void handleGoBack(ActionEvent e) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/chessui/main_menu.fxml"));
+            Parent root = loader.load();
+            Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+            Scene c = new Scene(root);
+            stage.setScene(c);
+            stage.show();
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 }

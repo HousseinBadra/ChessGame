@@ -13,6 +13,8 @@ public class SessionManager {
     }
 
     public void setSession(String t, String u) {
+        System.out.println(t);
+        System.out.println(u);
         token = t;
         username = u;
     }
