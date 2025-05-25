@@ -1,5 +1,8 @@
 package org.example.chessui.Controllers;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.util.Duration;
 import org.example.chessui.auth.SessionManager;
 import org.example.chessui.engine.ChessGame;
 import org.example.chessui.engine.types.ChessMove;
@@ -23,8 +26,6 @@ import org.example.chessui.game.GameDTO;
 import org.example.chessui.game.GameService;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
 
 public class OnePlayerGame {
 
@@ -121,7 +122,10 @@ public class OnePlayerGame {
 
             // If a human move was made, and it's now AI's turn, and the game is not over, make AI move
             if (moveMade && game.getCurrentPlayer() == AI_COLOR && !game.isCheckmate(ChessPlayer.Black)) {
-                makeAiMove();
+                var timeline =
+                        new Timeline(
+                                new KeyFrame(Duration.millis(100), e -> makeAiMove()));
+                timeline.playFromStart();
             }
         }
         // If clicked on an empty square or opponent's piece without a piece selected, just re-render
