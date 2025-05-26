@@ -43,6 +43,7 @@ public class OnePlayerGame {
     private Position currentPosition = null;
     private boolean saved = false;
     private long gameId = -1;
+    private boolean isAiMooving = false;
 
     private final ChessPlayer PLAYER_COLOR = ChessPlayer.White; // Human player is always White
     private final ChessPlayer AI_COLOR = ChessPlayer.Black;     // AI is always Black
@@ -83,7 +84,7 @@ public class OnePlayerGame {
 
     void handleClick(int row, int col) {
         // Only allow human clicks if it's the human player's turn and the game is not over
-        if (game.getCurrentPlayer() != PLAYER_COLOR || game.isCheckmate(PLAYER_COLOR)) {
+        if (game.getCurrentPlayer() != PLAYER_COLOR || game.isCheckmate(PLAYER_COLOR) || isAiMooving) {
             return;
         }
 
@@ -191,8 +192,9 @@ public class OnePlayerGame {
         if (game.isCheckmate(ChessPlayer.Black)) {
             return; // Don't make AI move if game is already over
         }
-
+        isAiMooving = true;
         ChessMove aiMove = game.getBestMove();
+        isAiMooving = false;
 
         if (aiMove != null) {
             game.applyMove(aiMove);

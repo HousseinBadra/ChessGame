@@ -17,13 +17,13 @@ public class DoublePawnMove extends MoveStrategy {
         ArrayList<ChessMove> result = new ArrayList<>();
         if(piece.isHasMoved()) return result;
         // check white
-        if (piece.player == ChessPlayer.White) {
+        if (piece.player == ChessPlayer.White && position.y == 1) {
             if (board.get(position.y + 1).get(position.x) == null && board.get(position.y + 2).get(position.x) == null) {
                 Position newPosition = new Position(position.x, position.y + 2);
                 result.add(new ChessMove(position, newPosition, piece.getClone(), null, null, Strategies.DoublePawnMove, null, null));
             }
         }
-        if (piece.player == ChessPlayer.Black) {
+        if (piece.player == ChessPlayer.Black && position.y == 6) {
             if (board.get(position.y - 1).get(position.x) == null && board.get(position.y - 2).get(position.x) == null) {
                 Position newPosition = new Position(position.x, position.y - 2);
                 result.add(new ChessMove(position, newPosition, piece.getClone(), null, null, Strategies.DoublePawnMove, null, null));

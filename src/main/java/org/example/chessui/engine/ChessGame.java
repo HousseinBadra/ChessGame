@@ -3,6 +3,7 @@ package org.example.chessui.engine;
 import org.example.chessui.engine.types.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Random;
 
 public class ChessGame {
@@ -219,16 +220,27 @@ public class ChessGame {
         return possibleMoves.get(new Random().nextInt(possibleMoves.size()));
     }
 
-    int miniMax(int depth, boolean maximizing) {
+    int miniMax(int depth, boolean maximizing, HashMap<String, Integer> hashMap) {
+        String c = this.boardToString();
+        if(hashMap.containsKey(c)) {
+            return hashMap.get(c);
+        }
         if(isCheckmate(getCurrentPlayer())) return maximizing ? -999 : +999;
-        if(depth == 4) return evalBoard(getCurrentPlayer());
+        if(depth == 6) {
+
+            int score = evalBoard(getCurrentPlayer());
+            hashMap.put(c, score);
+            return score;
+        }
         ArrayList<ChessMove> r = generateAllMoves();
         if(maximizing) {
             int bestScore = -9999;
             for (ChessMove chessMove : r) {
                 applyMove(chessMove);
                 togglePlayer();
-                int score = miniMax(depth +1, false);
+                int score = miniMax(depth +1, false, hashMap);
+                String current = this.boardToString();
+                hashMap.put(current, score);
                 if (score > bestScore) bestScore = score;
                 undo();
                 togglePlayer();
@@ -240,7 +252,9 @@ public class ChessGame {
             for (ChessMove chessMove : r) {
                 applyMove(chessMove);
                 togglePlayer();
-                int score = miniMax(depth + 1, true);
+                int score = miniMax(depth + 1, true, hashMap);
+                String current = this.boardToString();
+                hashMap.put(current, score);
                 if (score < bestScore) bestScore = score;
                 undo();
                 togglePlayer();
@@ -265,13 +279,16 @@ public class ChessGame {
         return player == ChessPlayer.White ? white - black : black - white;
     }
     public ChessMove getBestMove() {
+        HashMap<String, Integer> hashMap = new HashMap<String, Integer>();
         ArrayList<ChessMove> r = generateAllMoves();
             int bestScore = -9999;
             int bestIndex = -1;
             for (int i=0; i< r.size(); i++) {
                 applyMove(r.get(i));
                 togglePlayer();
-                int score = miniMax(1, false);
+                int score = miniMax(1, false, hashMap);
+                String c = boardToString();
+                hashMap.put(c, score);
                 if (score > bestScore) {
                     bestScore = score;
                     bestIndex = i;
@@ -297,6 +314,22 @@ public class ChessGame {
             }
             System.out.println((' '));
         }
+    }
+
+    public String boardToString() {
+        StringBuilder b = new StringBuilder();
+        b.append(getCurrentPlayer());
+        for (int row = 0; row < 8; row++) {
+            for (int col = 0; col < 8; col++) {
+                ChessPiece piece = board.get(row).get(col);
+                if (piece != null) {
+                    b.append(piece.render());
+                } else {
+                    b.append(" ");
+                }
+            }
+        }
+        return b.toString();
     }
 
 
