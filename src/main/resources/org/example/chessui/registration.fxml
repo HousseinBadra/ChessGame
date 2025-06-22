@@ -1,44 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.AnchorPane?>
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="org.example.chessui.Controllers.RegistrationController"
-            prefWidth="400" prefHeight="350"
-            style="-fx-background-color: linear-gradient(to bottom right, #2c3e50, #3498db);">
-    <!-- Username Field -->
-    <TextField fx:id="usernameField"
-               promptText="Username"
-               layoutX="100" layoutY="60"
-               style="-fx-background-radius:5; -fx-background-color:rgba(255,255,255,0.8); -fx-padding:8 12; -fx-font-size:14px;"/>
+<?import javafx.scene.layout.*?>
 
-    <!-- Email Field -->
-    <TextField fx:id="emailField"
-               promptText="Email"
-               layoutX="100" layoutY="100"
-               style="-fx-background-radius:5; -fx-background-color:rgba(255,255,255,0.8); -fx-padding:8 12; -fx-font-size:14px;"/>
+<StackPane xmlns="http://javafx.com/javafx"
+           xmlns:fx="http://javafx.com/fxml"
+           fx:controller="org.example.chessui.Controllers.RegistrationController"
+           style="-fx-background-color: linear-gradient(to bottom right, #2c3e50, #3498db);">
 
-    <!-- Password Field -->
-    <PasswordField fx:id="passwordField"
-                   promptText="Password"
-                   layoutX="100" layoutY="140"
+    <!--
+      A neat 300px-wide form, centered by the StackPane.
+      fillWidth="false" stops the oversized stretching.
+    -->
+    <VBox alignment="CENTER" spacing="15" fillWidth="false" maxWidth="300">
+        <TextField fx:id="usernameField"
+                   promptText="Username"
+                   prefWidth="300"
                    style="-fx-background-radius:5; -fx-background-color:rgba(255,255,255,0.8); -fx-padding:8 12; -fx-font-size:14px;"/>
 
-    <!-- Register Button -->
-    <Button fx:id="registerBtn"
-            text="Register"
-            layoutX="160" layoutY="180"
-            style="-fx-background-color:#2980b9; -fx-text-fill:white; -fx-font-weight:bold; -fx-background-radius:5; -fx-padding:8 20;"/>
+        <TextField fx:id="emailField"
+                   promptText="Email"
+                   prefWidth="300"
+                   style="-fx-background-radius:5; -fx-background-color:rgba(255,255,255,0.8); -fx-padding:8 12; -fx-font-size:14px;"/>
 
-    <!-- Back to Login Link -->
-    <Hyperlink fx:id="loginLink"
-               text="Back to Login"
-               layoutX="150" layoutY="220"
-               style="-fx-text-fill:white; -fx-underline:true;"/>
+        <PasswordField fx:id="passwordField"
+                       promptText="Password"
+                       prefWidth="300"
+                       style="-fx-background-radius:5; -fx-background-color:rgba(255,255,255,0.8); -fx-padding:8 12; -fx-font-size:14px;"/>
 
-    <!-- Error Label -->
-    <Label fx:id="errorLabel"
-           layoutX="100" layoutY="260"
-           textFill="red"
-           style="-fx-text-fill:#e74c3c; -fx-font-size:12px; -fx-font-weight:bold; -fx-opacity:0.9;"/>
-</AnchorPane>
+        <Button fx:id="registerBtn"
+                text="Register"
+                prefWidth="150"
+                style="-fx-background-color:#2980b9; -fx-text-fill:white; -fx-font-weight:bold; -fx-background-radius:5; -fx-padding:8 20;"/>
+
+        <Hyperlink fx:id="loginLink"
+                   text="Back to Login"
+                   style="-fx-text-fill:white; -fx-underline:true;"/>
+
+        <Label fx:id="errorLabel"
+               textFill="#e74c3c"
+               style="-fx-font-size:12px; -fx-font-weight:bold; -fx-opacity:0.9;"/>
+    </VBox>
+</StackPane>

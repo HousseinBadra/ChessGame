@@ -117,6 +117,7 @@ public class GameListController {
             Scene c = new Scene(root);
             c.getStylesheets().add(getClass().getResource("/org/example/chessui/styles.css").toExternalForm());
             stage.setScene(c);
+            stage.setFullScreen(true);
             stage.show();
         } catch (Exception ex) {
             throw new RuntimeException(ex);
